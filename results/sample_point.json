@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "calculation_id": "e7ed0aea-8cc5-4bb0-8597-8ddb22818594",
+    "calculator_version": "1.0.0",
+    "timestamp_utc": "2026-11-06T15:39:19.025746+00:00",
+    "pair": [
+      "Br",
+      "Br"
+    ],
+    "q_Ainv": 4.0,
+    "energy_near_keV": 13.45,
+    "energy_far_keV": 12.0,
+    "mode": "Default",
+    "source": {
+      "source": "XrayDB/Chantler",
+      "version": "4.5.8",
+      "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+      "sha256": "fd58bcc4213e3a7c6ecd32d1d8dfd7f4c74526ca468a3df62cce99afeb5ff5bf",
+      "url": "https://xraypy.github.io/XrayDB/python.html",
+      "interpolation": "native API: f1 spline(s=0), Phase 1 extent anchors [11830,13460] eV within that interval; outside it scalar native knots; f2 log-log; f0 Waasmaier-Kirfel",
+      "scope": "neutral atoms",
+      "retrieved_utc": "2026-11-06T15:30:43.971073+00:00",
+      "retrieval_note": "XrayDB 4.5.8 wheel installed during this session; timestamp records acquisition session"
+    },
+    "xraydb_version": "4.5.8",
+    "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+    "Br_K_edge_eV": 13474.0,
+    "units": {
+      "f": "electrons",
+      "W": "electrons²",
+      "q": "Å⁻¹",
+      "energy": "keV"
+    },
+    "warnings": [
+      "Neutral-atom near-edge predictions do not model chemical-state spectra or experimental uncertainty."
+    ],
+    "convention": "near-minus-far; one unordered pair; no multiplicity or geometry"
+  },
+  "results": [
+    {
+      "calculation_id": "e7ed0aea-8cc5-4bb0-8597-8ddb22818594",
+      "q_Ainv": 4.0,
+      "W_far_e2": 458.71262630976577,
+      "W_near_e2": 303.4367796505867,
+      "delta_W_e2": -155.27584665917908,
+      "relative_change_percent": -33.85035374071484,
+      "Br_far_f0_e": 23.267010391517157,
+      "Br_far_fprime_e": -1.857902328110646,
+      "Br_far_fdoubleprime_e": 0.6022609394175632,
+      "Br_far_f_real_e": 21.40910806340651,
+      "Br_far_f_imag_e": 0.6022609394175632,
+      "Br_near_f0_e": 23.267010391517157,
+      "Br_near_fprime_e": -5.856022224264764,
+      "Br_near_fdoubleprime_e": 0.5424672251702024,
+      "Br_near_f_real_e": 17.41098816725239,
+      "Br_near_f_imag_e": 0.5424672251702024
+    }
+  ]
+}

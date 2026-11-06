@@ -1,0 +1,12 @@
+{
+  "/": {
+    "status": 200,
+    "bytes": 7863,
+    "health_body": true
+  },
+  "/_stcore/health": {
+    "status": 200,
+    "bytes": 2,
+    "health_body": "ok"
+  }
+}
