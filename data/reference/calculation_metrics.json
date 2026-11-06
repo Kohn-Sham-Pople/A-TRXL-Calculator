@@ -1,0 +1,57 @@
+{
+  "status": "executed",
+  "phase_step": "1.2",
+  "engine": "xraydb",
+  "n_energy": 404,
+  "n_q_including_zero": 292,
+  "n_q_physical_trial": 291,
+  "n_pair_classes": 4,
+  "n_contrasts": 3,
+  "br_only_primary_contrast_fprime_e": -3.9981198961541184,
+  "max_additive_closure_e2": 0.0,
+  "q0_two_equal_Br_intensity_closure_e2": 0.0,
+  "q4_contrasts": {
+    "Br-Br": {
+      "W_far_q4_e2": 458.71262630976577,
+      "W_near_q4_e2": 303.43677965058663,
+      "delta_q4_e2": -155.27584665917914,
+      "relative_change_q4_percent": -33.85035374071485
+    },
+    "Br-C": {
+      "W_far_q4_e2": 50.77897934829957,
+      "W_near_q4_e2": 41.26448554781789,
+      "delta_q4_e2": -9.51449380048168,
+      "relative_change_q4_percent": -18.737071761959886
+    },
+    "Br-O": {
+      "W_far_q4_e2": 82.99809584796841,
+      "W_near_q4_e2": 67.41442240875601,
+      "delta_q4_e2": -15.583673439212404,
+      "relative_change_q4_percent": -18.775940917678117
+    },
+    "Br-H": {
+      "W_far_q4_e2": 4.749952777180546,
+      "W_near_q4_e2": 3.8628862979929663,
+      "delta_q4_e2": -0.8870664791875797,
+      "relative_change_q4_percent": -18.675269435291533
+    }
+  },
+  "q4_BrBr_imag_contribution_delta_e2": -0.06844754876426667,
+  "source_swap_principle": "Br-only replacements; do not interpret as full independent all-element Henke/Chantler comparison",
+  "packages": {
+    "python": "3.14.6",
+    "numpy": "2.4.6",
+    "scipy": "1.18.0",
+    "xarray": "2026.7.0",
+    "pandas": "3.0.3",
+    "matplotlib": "3.11.0",
+    "xraydb": "4.5.8"
+  },
+  "inputs_sha256": {
+    "provenance_step12.json": "7d845e0e437eba9eb2dc0b2156d7d8e4f0eafd394903edb6473269979b0ae706",
+    "step11_henke_nist_comparison.csv": "984aa2cf2c23d7740d7ac25860469b9fc0d841f3406e37755f72e375048943fb",
+    "step11_xraydb_br_runtime.csv": "f5c28a8f77cd99a6dc49d5c05c60238cf353711b85fc074dbc77e5eba6a6c106",
+    "waasmaier_kirfel_neutral_f0.json": "17f963cbe18b95e5a47af5bcaa2300ae45cd4418649de07f89894ee8ed579bb5",
+    "xraydb_chantler_fine_CHO_excerpt.csv": "6450f1722b900c8c1a54e5269f891a51354096b44dd1b5653970861efc7f5061"
+  }
+}
