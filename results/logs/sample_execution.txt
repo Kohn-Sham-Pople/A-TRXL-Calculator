@@ -1,0 +1,6 @@
+mkdir -p failed for path /home/agent/.config/matplotlib: [Errno 30] Read-only file system: '/home/agent/.config/matplotlib'
+Matplotlib created a temporary cache directory at /tmp/matplotlib-7kan2h_k because there was an issue with the default path (/home/agent/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig error: No writable cache directories
+                      calculation_id  q_Ainv   W_far_e2  W_near_e2  delta_W_e2  relative_change_percent  Br_far_f0_e  Br_far_fprime_e  Br_far_fdoubleprime_e  Br_far_f_real_e  Br_far_f_imag_e  Br_near_f0_e  Br_near_fprime_e  Br_near_fdoubleprime_e  Br_near_f_real_e  Br_near_f_imag_e
+e7ed0aea-8cc5-4bb0-8597-8ddb22818594     4.0 458.712626  303.43678 -155.275847               -33.850354     23.26701        -1.857902               0.602261        21.409108         0.602261      23.26701         -5.856022                0.542467         17.410988          0.542467
+{'python': '3.12.14', 'xraydb': '4.5.8', 'numpy': '2.5.4', 'scipy': '1.18.1', 'pandas': '3.1.1', 'streamlit': '1.67.0', 'plotly': '7.1.0', 'matplotlib': '3.11.2', 'pytest': '9.2.0', 'xarray': '2026.9.0'}

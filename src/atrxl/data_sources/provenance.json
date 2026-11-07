@@ -1,0 +1,28 @@
+{
+  "Henke": {
+    "file": "henke_br.nff",
+    "url": "https://henke.lbl.gov/optical_constants/sf/br.nff",
+    "version": "Henke 1993; retrieved raw table",
+    "retrieved_utc": "2026-11-06T15:30:43.971073+00:00",
+    "sha256": "210194f0c2203f75b7181205eb1e515b1fbbc368d51d8324ce5abb680d308dbf",
+    "domain_eV": [
+      11830.0,
+      13473.6
+    ],
+    "interpolation": "linear full f1(E) minus Z; log-log f2(E); pre-edge only",
+    "scope": "Br-only source swap; f0 and non-Br factors remain native XrayDB"
+  },
+  "NIST": {
+    "file": "nist_br.csv",
+    "url": "https://api.github.com/repos/usnistgov/FFAST.jl/git/blobs/5c8932cc8a019b9178055246ed8926dd79733d0d",
+    "version": "Git blob 5c8932cc8a019b9178055246ed8926dd79733d0d",
+    "retrieved_utc": "2026-11-06T15:30:43.971156+00:00",
+    "sha256": "c000e429b869d2dfe168dec6fc1bdc39bbbf6a8a5ae0f7b16455549b43b1cbb6",
+    "domain_eV": [
+      11830.0,
+      13460.23
+    ],
+    "interpolation": "linear full f1(E) minus Z; log-log f2(E); pre-edge only",
+    "scope": "Br-only source swap; f0 and non-Br factors remain native XrayDB"
+  }
+}

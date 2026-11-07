@@ -1,0 +1,8 @@
+data/reference/contrast_weights.nc: OK
+data/reference/calculation_metrics.json: OK
+data/reference/xraydb_runtime_comparison.csv: OK
+docs/ATRXL_Step1_1_Report.md: OK
+docs/ATRXL_Step1_2_Final_Report.md: OK
+docs/ATRXL_Step1_3_Final_Report.md: OK
+docs/ATRXL_Step1_4_Final_Report.md: OK
+docs/ATRXL_Step1_5_Final_Report.md: OK

@@ -1,0 +1,43 @@
+{
+  "XrayDB/Br-Br": {
+    "max_absolute_residual_e2": 9.094947017729282e-13
+  },
+  "XrayDB/Br-C": {
+    "max_absolute_residual_e2": 8.526512829121202e-14
+  },
+  "XrayDB/Br-O": {
+    "max_absolute_residual_e2": 1.1368683772161603e-13
+  },
+  "XrayDB/Br-H": {
+    "max_absolute_residual_e2": 1.4210854715202004e-14
+  },
+  "Henke/Br-Br": {
+    "max_absolute_residual_e2": 3.290097083663568e-10
+  },
+  "Henke/Br-C": {
+    "max_absolute_residual_e2": 2.998490344907623e-11
+  },
+  "Henke/Br-O": {
+    "max_absolute_residual_e2": 4.0046188587439246e-11
+  },
+  "Henke/Br-H": {
+    "max_absolute_residual_e2": 4.995115432393504e-12
+  },
+  "NIST/Br-Br": {
+    "max_absolute_residual_e2": 3.317381924716756e-10
+  },
+  "NIST/Br-C": {
+    "max_absolute_residual_e2": 2.998490344907623e-11
+  },
+  "NIST/Br-O": {
+    "max_absolute_residual_e2": 4.007461029686965e-11
+  },
+  "NIST/Br-H": {
+    "max_absolute_residual_e2": 4.995115432393504e-12
+  },
+  "compared_values": 1415616,
+  "tolerance": {
+    "absolute_e2": 1e-09,
+    "relative": 2e-13
+  }
+}
