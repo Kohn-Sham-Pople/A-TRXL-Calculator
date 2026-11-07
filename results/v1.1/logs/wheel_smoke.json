@@ -1,0 +1,15 @@
+{
+  "module": "/tmp/atrxl-v11-wheel-install/atrxl/__init__.py",
+  "version": "1.1.0",
+  "counts": {
+    "XrayDB": 92,
+    "Henke": 92,
+    "NIST": 92
+  },
+  "Fe_Au_W_12keV_q4_e2": {
+    "XrayDB": 766.4348666386303,
+    "Henke": 742.7639643778629,
+    "NIST": 782.5167619792223
+  },
+  "W_export_verified": true
+}

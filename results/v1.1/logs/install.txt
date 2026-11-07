@@ -1,0 +1,24 @@
+Obtaining file:///workspace/A-TRXL-Calculator
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: atrxl-calculator
+  Building editable for atrxl-calculator (pyproject.toml): started
+  Building editable for atrxl-calculator (pyproject.toml): finished with status 'done'
+  Created wheel for atrxl-calculator: filename=atrxl_calculator-1.1.0-0.editable-py3-none-any.whl size=1404 sha256=78ce47c0f895e2916a4c249aa4a0994db70af5cdc92e837119c2b58171e75878
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ectrgh55/wheels/3a/b5/a4/1ed6ba7ad4136fe63f31eb1e2e410553fd0df669d745b8dc07
+Successfully built atrxl-calculator
+Installing collected packages: atrxl-calculator
+  Attempting uninstall: atrxl-calculator
+    Found existing installation: atrxl-calculator 1.0.0
+    Uninstalling atrxl-calculator-1.0.0:
+      Successfully uninstalled atrxl-calculator-1.0.0
+Successfully installed atrxl-calculator-1.1.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: python -m pip install --upgrade pip

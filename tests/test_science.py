@@ -8,11 +8,11 @@ import xraydb
 from atrxl import atomic_factor, pair_weight, delta_pair_weight
 from atrxl.factors import factor_components
 from atrxl.validation import CalculationError, PAIRS, ELEMENTS, q_grid
-from atrxl.sources import SOURCES,load_table,anomalous
+from atrxl.sources import LEGACY_SOURCES as SOURCES,load_table,anomalous
 from atrxl.export import calculate,csv_bytes,results_json
 ROOT=Path(__file__).resolve().parents[1]
 
-@pytest.mark.parametrize('source,expected',[('XrayDB',-155.27584665917914),('Henke',-159.315760),('NIST',-164.812430)])
+@pytest.mark.parametrize('source,expected',[('XrayDB',-155.27584665917914),('Henke_Br_swap',-159.315760),('NIST_Br_swap',-164.812430)])
 def test_published_benchmarks(source,expected):
     assert delta_pair_weight('Br-Br',4,13.45,12,source)==pytest.approx(expected,abs=5e-7)
 
@@ -49,7 +49,7 @@ def test_native_extent_and_batch_independence():
 @pytest.mark.parametrize('source',SOURCES)
 @pytest.mark.parametrize('pair',['Br-Br','Br-C','Br-O','Br-H'])
 def test_full_netcdf_weight_agreement(source,pair):
-    channel={'XrayDB':'XrayDB_primary','Henke':'Henke_Br_swap','NIST':'NIST_Br_swap'}[source]
+    channel={'XrayDB':'XrayDB_primary','Henke_Br_swap':'Henke_Br_swap','NIST_Br_swap':'NIST_Br_swap'}[source]
     with xr.open_dataset(ROOT/'data/reference/contrast_weights.nc') as ds:
         q=ds.q_Ainv.values
         for start in range(0,404,20):
@@ -69,7 +69,7 @@ def test_metrics_and_runtime_csv():
     np.testing.assert_allclose(fp,raw.fprime_xraydb_e,atol=1e-12)
     np.testing.assert_allclose(fpp,raw.fdoubleprime_xraydb_e,atol=1e-12)
 
-@pytest.mark.parametrize('source',['Henke','NIST'])
+@pytest.mark.parametrize('source',['Henke_Br_swap','NIST_Br_swap'])
 def test_original_knots_and_interpolation(source):
     a,m=load_table(source)
     knots=a[(a[:,0]>=m['domain_eV'][0])&(a[:,0]<=m['domain_eV'][1])]
@@ -105,7 +105,7 @@ def test_edge_crossing(source):
     with pytest.raises(CalculationError,match='K-edge'): pair_weight('Br-Br',4,[13.4,13.5],source,mode='Extended')
 
 def test_invalid_shapes_sources_and_scans():
-    for pair in ['Fe-Br','Br','Br-Br-C',None]:
+    for pair in ['Xx-Br','Br','Br-Br-C',None]:
         with pytest.raises(CalculationError): pair_weight(pair,4,12)
     with pytest.raises(CalculationError): pair_weight('Br-Br',[1,2],[12,12,12])
     with pytest.raises(CalculationError): pair_weight('Br-Br',np.ones((101,1)),np.ones((1,101))*12)
@@ -136,7 +136,7 @@ def test_contrast_combined_allocation_guard():
 def test_source_integrity_unavailable_and_packaged_copies(tmp_path,monkeypatch):
     import atrxl.sources as sources
     import shutil
-    for s in ('Henke','NIST'):
+    for s in ('Henke_Br_swap','NIST_Br_swap'):
         _,m=load_table(s)
         assert (ROOT/'data/sources'/m['file']).read_bytes()==(ROOT/'src/atrxl/data_sources'/m['file']).read_bytes()
     shutil.copytree(sources.ROOT,tmp_path/'tables')
@@ -145,14 +145,14 @@ def test_source_integrity_unavailable_and_packaged_copies(tmp_path,monkeypatch):
     (tmp_path/'tables/henke_br.nff').write_text('corrupt')
     try:
         with pytest.raises(CalculationError,match='SHA-256'):
-            pair_weight('C-C',4,12,'Henke')
+            pair_weight('C-C',4,12,'Henke_Br_swap')
     finally: sources.load_table.cache_clear()
 
 def test_png_and_metadata_exports():
     from atrxl.plotting import png
     from PIL import Image
     from io import BytesIO
-    frame,meta=calculate('Br-C',[.2,4,6],13.45,12,'Henke')
+    frame,meta=calculate('Br-C',[.2,4,6],13.45,12,'Henke_Br_swap')
     data=png(frame.q_Ainv,{'ΔW':frame.delta_W_e2},'Physical q (Å⁻¹)','Henke Br-only swap')
     image=Image.open(BytesIO(data));assert image.format=='PNG' and image.width>=1000
     assert meta['source']['scope'].startswith('Br-only')

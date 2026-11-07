@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "XrayDB": 92,
+    "Henke": 92,
+    "NIST": 92
+  },
+  "native_unavailable": {
+    "Np": "No native Chantler f1/f2 row",
+    "Pu": "No native Chantler f1/f2 row",
+    "Am": "No native Chantler f1/f2 row",
+    "Cm": "No native Chantler f1/f2 row",
+    "Bk": "No native Chantler f1/f2 row",
+    "Cf": "No native Chantler f1/f2 row"
+  },
+  "samples": [
+    {
+      "source": "XrayDB",
+      "delta_W_BrC_q4_e2": -9.51449380048168
+    },
+    {
+      "source": "Henke",
+      "delta_W_BrC_q4_e2": -9.819925806618691
+    },
+    {
+      "source": "NIST",
+      "delta_W_BrC_q4_e2": -10.11109736762576
+    },
+    {
+      "source": "Henke_Br_swap",
+      "delta_W_BrC_q4_e2": -9.808142618011786
+    },
+    {
+      "source": "NIST_Br_swap",
+      "delta_W_BrC_q4_e2": -10.096150302654415
+    }
+  ],
+  "versions": {
+    "python": "3.12.14",
+    "atrxl-calculator": "1.1.0",
+    "xraydb": "4.5.8",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "streamlit": "1.67.0",
+    "plotly": "7.1.0",
+    "matplotlib": "3.11.2",
+    "pytest": "9.2.0",
+    "xarray": "2026.9.0",
+    "playwright": "1.64.1"
+  }
+}

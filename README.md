@@ -1,120 +1,173 @@
-# A-TRXL Scattering Factor & Contrast Calculator v1.0
+# A-TRXL Scattering Factor & Contrast Calculator v1.1
 
-실제로 설치한 XrayDB 4.5.8을 호출하는 neutral-atom scientific calculator입니다.
-GUI 없이도 `atrxl` Python API로 사용할 수 있습니다. **계산값은 원자 pair coefficient이며 실험 intensity 또는 SNR가 아닙니다.**
+A local Streamlit scientific calculator with a standalone NumPy/XrayDB engine.
+Scope: atomic pair coefficients only. No Debye engine, molecular geometry, experimental
+intensity, pump–probe double difference, or SNR model is included.
 
-## Windows / Anaconda Prompt 설치
+## Windows / Anaconda Prompt: 설치 및 실행
 
-1. 프로젝트 ZIP을 압축 해제하거나 이 저장소를 clone합니다. `app.py`가 보이는 폴더로 이동합니다.
-   Unicode 및 OneDrive 경로는 따옴표로 묶으세요.
+1. GitHub의 **atrxl-calculator-v1.1** 브랜치를 선택하고 Code → Download ZIP으로 내려받아
+   압축을 풀거나 해당 브랜치를 clone합니다. 기존 v1.0은 `atrxl-calculator-v1`에 보존되어 있습니다.
+2. Anaconda Prompt에서 `app.py`가 보이는 폴더로 이동합니다. Unicode/OneDrive 경로는 따옴표를 사용합니다.
    ```bat
    cd /d "C:\Users\사용자\OneDrive\연구\A-TRXL-Calculator"
-   ```
-2. 격리된 환경을 생성하고 활성화합니다. 실제 실행 검증 환경은 Python 3.12.14입니다.
-   ```bat
-   conda create -n atrxl python=3.12 pip -y
-   conda activate atrxl
+   conda create -n atrxl-v11 python=3.12 pip -y
+   conda activate atrxl-v11
    python -m pip install -r requirements.txt
    python -m pip install --no-deps -e .
    python -m pip check
-   ```
-3. 프로그램을 실행합니다. 일반 local desktop 환경에서는 Streamlit이 브라우저를 엽니다.
-   ```bat
    streamlit run app.py
    ```
-   브라우저가 자동으로 열리지 않으면 터미널에 표시된 Local URL을 브라우저에 입력합니다.
-   종료는 Prompt에서 Ctrl+C입니다. 클라우드 검증은 headless로 수행했으며 브라우저 자동 실행은 Windows에서 실행 검증하지 않았습니다.
-4. 검증 및 sample 생성:
+3. 브라우저가 자동으로 열리지 않으면 Streamlit이 터미널에 표시한 Local URL을 열어주세요.
+   종료는 Ctrl+C입니다. 포트 충돌 시 `streamlit run app.py --server.port 8503`을 사용합니다.
+4. Tests:
    ```bat
    python -m pytest -q -ra
-   python scripts/sample_calculation.py
+   python scripts/audit_reference.py
    ```
 
-Python 3.14.6 / Windows는 `results/logs/windows_python314_dependency_check.txt`의
-공식 win_amd64 CPython 3.14 wheel dependency dry-run으로 호환성만 확인했습니다.
-Windows 또는 Python 3.14.6에서 실제 scientific/UI tests를 실행한 것은 아닙니다.
-Python 3.12 환경을 우선 권장하며 3.14 사용 시 별도 conda 환경에서 동일한 tests를 실행하세요.
-`requirements.txt`는 실제 검증 환경의 전체 고정 버전이며 XrayDB는 4.5.8입니다.
+실제 실행 검증은 Linux / Python 3.12.14에서 수행했습니다. Windows/Python 3.14.6의 실제
+실행 검증을 주장하지 않습니다. 기존 고정 requirements의 Windows CPython 3.14 wheel 해석
+결과는 v1.0 로그에 보존되어 있지만 v1.1 Windows 실행과는 구분해야 합니다.
+XrayDB 4.5.8을 유지했고 runtime dependency는 v1.0과 같습니다.
+Source 원본 데이터가 프로젝트와 설치 wheel에 포함되므로 계산 중 인터넷 다운로드는 없습니다.
 
-## 사용 방법
+## Four v1.1 improvements
 
-- **Home**: 공식과 기본 benchmark 안내.
-- **Calculator**: 10개 pair, source, W/ΔW, q, Efar/Enear 및 Default/Extended 선택 후 **Calculate**.
-- 단일점 출력에는 각 원소의 f0, f′, f″, complex factor의 실수/허수부, Wfar/Wnear/ΔW와 상대변화가 포함됩니다.
-- q scan은 qmin + n·step ≤ qmax인 점을 사용합니다. qmax는 step에 맞는 경우에만 포함됩니다.
-- q scan 2개 그래프, energy-dependent W와 PNG/CSV/JSON 다운로드를 제공합니다.
-- **Source Comparison**: 원하는 source들을 선택해 W(Enear) 또는 near-minus-far ΔW를 비교합니다.
-- **About / Scientific Notes**: 해석 한계, source metadata 및 SHA-256.
-- 입력 변경 후 Calculate를 다시 눌러야 결과가 갱신됩니다. 다운로드에는 마지막 성공한 계산의 입력 및 UUID가 연결됩니다.
-- PNG는 같은 full-precision arrays를 Matplotlib으로 렌더링하며 Plotly 화면은 interactive입니다.
+### 1. Dynamic Extended energy domains
 
-## Scientific conventions
+Extended를 선택하면 현재 source와 Element A/B에 대한 실제 energy-domain intersection을
+keV로 표시합니다. Source 또는 원소를 바꾸면 즉시 갱신됩니다. 계산은 Calculate를 눌러야 실행됩니다.
+
+최소/최대 값은 **전체 envelope**입니다. 그 사이에 absorption edges 또는 interpolation gaps가
+있으므로 펼침 영역의 `usable_bands_keV`, 원소별 domain, edge 및 금지 구간도 확인하세요.
+Native source의 scan bands는 설치 DB의 shell edges에서 분리합니다.
+확인한 공통 domain 밖의 에너지, 금지된 구간 보간 또는 edge를 건너는 scan/contrast는
+오류로 차단하며 extrapolation과 source fallback을 하지 않습니다.
+
+Native DB는 원소별 `chantler_energies()`의 실제 양끝을 사용하고,
+Henke/NIST는 locally validated raw tables의 양끝과 manifest의 금지 구간을 사용합니다.
+예를 들어 Fe/Au는 이번 데이터에서 native 0.00101–966.26674 keV,
+Henke 0.0293–30 keV, NIST archived 0.01069–432.9451 keV입니다.
+이 값은 구현에서 hard-code한 한계가 아니며 pair/source마다 다시 계산됩니다.
+
+### 2. W / ΔW are distinct calculations
+
+| Mode | Inputs | Main result | q scan | Energy scan |
+|---|---|---|---|---|
+| W | q, **E** | W(q,E) | W(q) at fixed E | W(E) at fixed q |
+| ΔW | q, **Efar/Enear** | Wfar, Wnear, ΔW | ΔW(q) | ΔW(Enear; fixed Efar) |
+
+W에서는 Efar/Enear 입력과 ΔW 계산·결과가 없습니다. W CSV/JSON에는 `W_e2`, `energy_keV`와
+단일 에너지의 factors만 들어 있습니다. ΔW에는 `W_far_e2`, `W_near_e2`, `delta_W_e2`,
+relative change 및 두 에너지의 factors가 포함됩니다. Relative denominator |Wfar|≤1e−12이면
+CSV 빈값 / JSON null입니다. PNG는 해당 mode의 동일 numerical arrays로 생성합니다.
+
+### 3. Three independent sections
+
+1. **Single-point Calculation**: Element A/B, source, domain mode, q, W/ΔW와 해당 에너지 입력.
+2. **Energy Scan**: checkbox와 energy min/max. 꺼져 있으면 입력이 비활성화되고 scan을 계산하지 않습니다.
+3. **q Scan**: checkbox와 qmin/qmax/step. Energy Scan과 독립적으로 동작합니다.
+
+두 scan은 기본 OFF입니다. Checkbox와 mode는 즉시 UI에 반영됩니다. 입력 변경 후 기존 결과는
+숨겨지고 Calculate 재실행 안내가 나옵니다. Calculate는 모든 활성화 입력을 검증한 뒤 결과와
+다운로드를 함께 표시하므로 오류가 나면 일부 성공 결과를 새 결과로 export하지 않습니다.
+q grid는 qmin+n·step≤qmax로 구성하며 qmax는 step에 맞는 경우에만 포함됩니다. 최대 10000 points.
+
+### 4. Full-element, source-specific anomalous factors
+
+이번 설치 데이터에서 세 source 모두 **H–U의 92 neutral species**를 지원합니다.
+지원 목록은 실제 neutral f0 및 factor rows/raw files를 확인하여 생성합니다.
+A/B는 독립 선택하며 same-element/different-element pair가 모두 가능합니다.
+손상·누락된 factor는 지원 목록에서 제외하고 사유를 표시합니다. 다른 source로 대체하지 않습니다.
+
+- **XrayDB/Chantler**: neutral Waasmaier f0 및 Chantler f1/f2 row의 실제 intersection.
+- **CXRO/Henke**: 공식 `sf.tar.gz`의 92개 original `.nff` tables.
+- **NIST/Chantler archived**: 공식 usnistgov/FFAST.jl의 pinned snapshot, 92개 `mac[Z].csv`와 `shelldata.csv`.
+  Live NIST FFAST backend의 최신 table이라고 주장하지 않습니다.
+- 모든 source의 f0는 공통 XrayDB/Waasmaier–Kirfel neutral model입니다.
+- Henke/NIST에서는 **선택한 두 원소 모두** 해당 source의 anomalous factors를 사용합니다.
+  full f1에서 각 원소의 Z를 빼서 f′로 변환하며, f2는 f″입니다.
+
+Provenance: `data/sources/full/manifest.json`에 table별 URL, version/commit, retrieval UTC,
+SHA-256, 실제 domain, excluded intervals, interpolation 및 common-f0 provenance가 있습니다.
+원본 표는 수정하지 않았고 동일 package copies는 `src/atrxl/data_sources/full/`에 포함됩니다.
+
+**Edge / interpolation policy**:
+
+- f1: piecewise linear in E, then subtract Z. Positive f2: log-log; zero–zero intervals: exact zero.
+- Henke −9999 undefined f1은 사용할 수 없습니다. Mg/Pt/Er 등의 상충 duplicate-energy rows는
+  모두 제외하고 그 빈 구간 보간을 막습니다. 원본 raw file은 보존합니다. Er의 역순 행은 안정 정렬합니다.
+- Henke narrow raw-knot edge brackets를 검출하고, native shell locator 주변에 bracket이 없으면
+  해당 enclosing interval을 보수적으로 금지합니다. 이 보조 locator의 출처도 metadata에 명시합니다.
+- NIST는 **동일 archive의 shelldata**에서 각 shell edge를 확인하여 enclosing interval 보간을 금지합니다.
+- Zero/positive f2 경계는 log-log가 정의되지 않으므로 금지합니다.
+- 보수적으로 금지한 넓은 bracket 안의 **정확한 유효 원본 knot**는 직접 읽을 수 있습니다.
+  그 사이를 건너는 scan/ΔW는 허용하지 않습니다. 상충 duplicate knot 자체는 사용할 수 없습니다.
+- Native source는 직접 XrayDB API를 호출합니다. Near-edge native spline 및 raw tabulation의
+  numerical prediction은 chemical-state 또는 experimental validity 검증을 의미하지 않습니다.
+
+## Scientific conventions / Phase 1 compatibility
 
 `f=f0(q)+f′(E)+i f″(E)`, `W=Re[f_a conj(f_b)]`, `ΔW=Wnear−Wfar`.
-Physical q는 Å⁻¹, 외부 API/GUI energy는 keV, XrayDB energy는 eV,
-f0 argument는 `q/(4π)`입니다. Factors는 electrons, weights는 electrons²입니다.
-단일 unordered pair coefficient이며 Debye multiplicity 2, geometry sinc,
-분자 구조, sample pair counts 및 실험 intensity를 포함하지 않습니다.
+외부 q는 physical Å⁻¹, energy는 keV, 내부 XrayDB는 q/(4π)와 eV입니다.
+Factors는 electrons, W/ΔW는 electrons² per one unordered pair입니다.
+Complex conjugation, imaginary term, neutral model을 유지하며 multiplicity 2와 geometry는 포함하지 않습니다.
 
-Default: q=0.2–6.0 Å⁻¹, E=11.83–13.46 keV. q=0은 별도 forward diagnostic입니다.
-Extended: q≥0 및 실제 native table domain 안에서만 계산하고 경고합니다.
-f0 parameterization이 수치적으로 평가된다는 사실은 그 q의 physical accuracy 검증이 아닙니다.
-Br K-edge는 native DB에서 13.474 keV로 확인하며 그 경계를 건너는 energy interval은 차단합니다.
-입력은 real finite scalar 또는 1/2-D NumPy-broadcastable arrays; 최종 최대 10000 points입니다.
+Default numerical input range: q=0.2–6 Å⁻¹, E=11.83–13.46 keV, q=0은 forward diagnostic.
+**Phase 1 research validation은 Br/C/O/H에 한정**됩니다. 새 원소는 source-level numerical tests이며
+Phase 1에서 모두 검증되었다고 주장하지 않습니다. Extended f0 evaluation은 physical accuracy 보장이 아닙니다.
 
-### 중요한 native API 재현 규칙
+XrayDB 4.5.8 f1 spline은 요청 energy extent에 의존합니다. 기존 Br/C/O/H의 11.83–13.46 keV
+계산은 `[11830, E_eV, 13460]` native extent anchors를 유지하여 Phase 1을 재현합니다.
+새 원소와 그 밖의 E는 scalar native API를 직접 호출합니다. 저장 NetCDF의 외삽은 없습니다.
 
-XrayDB 4.5.8은 `f1_chantler`에 전달한 energy extent에 따라 spline knots를 선택합니다.
-동일 버전의 unanchored scalar 호출만으로는 Phase 1 benchmark를 재현하지 못합니다
-(ΔW≈−155.6663118992356 e²).
-따라서 11.83–13.46 keV 내의 각 요청에는 native API에 `[11830, E_eV, 13460]`을 전달하고
-가운데 결과를 선택합니다. 이것은 저장 NetCDF 보간이 아니며 native API 직접 평가입니다.
-이를 통해 arbitrary q/E에서도 batch/shape에 무관한 Phase 1-compatible 값을 얻습니다.
-범위 밖 Extended E는 scalar native API를 직접 사용합니다. 두 규칙 경계에서의 작은
-spline context 차이는 의도적으로 metadata에 명시하며 physical continuity를 보증하지 않습니다.
+**Source-ID migration**: v1.1에서 `Henke`/`NIST`는 두 원소 모두 해당 source를 뜻합니다.
+역사적 Br-only 값은 `Henke_Br_swap`/`NIST_Br_swap`으로 명시적으로 보존했습니다.
+Source Comparison에서 full 및 labeled Phase 1 legacy channels를 함께 선택할 수 있습니다.
+기존 Br–Br benchmark는 full/legacy 모두 동일하며, Br–C 등의 full-source 결과는 non-Br도 바뀌므로
+legacy Br-only 값과 다를 수 있습니다. 이는 fallback이 아니라 정의를 명확히 분리한 것입니다.
 
-### Sources and references
-
-Primary: neutral XrayDB/Chantler 4.5.8, database 9.2.
-Henke 및 NIST는 **Br-only source swap**이며 모든 f0와 C/O/H는 동일 XrayDB입니다.
-Non-Br pair는 swap에 의해 변하지 않습니다. Br raw full f1에서 Z=35를 빼고,
-f1는 linear E, 양수 f2는 log-log interpolation을 적용합니다.
-검증·등록된 pre-edge domain만 허용합니다: Henke 11.830–13.4736 keV,
-NIST 11.830–13.46023 keV. 전체 원시 표가 더 넓더라도 이 adapter는 그 밖의 값을 제공하지 않습니다.
-Extrapolation 및 absorption discontinuity를 건너는 보간은 없습니다.
-
-`data/sources/provenance.json`에 URL/version/retrieval UTC/SHA-256/보간법이 있습니다.
-NIST는 Phase 1에서 지목한 Git blob의 Git SHA-1까지 검증 후 저장했습니다.
-Henke는 공식 URL의 현재 raw file이며 과거 retrieval과 byte-identical이라고 주장하지 않습니다.
-두 표의 nominal benchmark와 전체 저장 NetCDF와의 일치를 tests에서 확인합니다.
-wheel 설치를 위한 동일 raw files가 `src/atrxl/data_sources/`에도 들어 있습니다.
-
-제공된 Phase 1 files는 `data/reference/`와 `docs/ATRXL_Step1_*`이며 원본 SHA-256을 tests로 검사합니다.
-보고서에 언급된 `A-TRXL Python Plan.pdf`, 원래 sparse source excerpts, Phase 0 문서는 이 checkout에 없습니다.
-이 파일들을 읽었다고 주장하지 않으며 현재 확보한 raw tables의 provenance를 구분합니다.
-
-## GUI-independent Python API
+## Python API / exports
 
 ```python
 import numpy as np
 from atrxl import atomic_factor, pair_weight, delta_pair_weight
-from atrxl import pair_weight_curve, delta_weight_curve
-f = atomic_factor('Br', 4., 13.45)  # complex electrons
-w = pair_weight(('Br','C'), 4., 12.)
-dw = delta_pair_weight('Br-Br', 4., 13.45, 12.)
-curve = delta_weight_curve('Br-Br', np.linspace(.2, 6, 291), 13.45, 12.)
+from atrxl.sources import supported_elements, pair_domain
+from atrxl.export import calculate_w, calculate, energy_scan
+
+print(supported_elements('Henke'))
+print(pair_domain(('Fe', 'Au'), 'Henke'))
+f = atomic_factor('Fe', 4., 12., 'Henke')
+w = pair_weight(('Fe', 'Au'), 4., 12., 'Henke')
+dw = delta_pair_weight('Br-Br', 4., 13.45, 12., 'XrayDB')
+point, metadata = calculate_w('Fe-Au', 4., 12., 'NIST')
+curve, metadata = energy_scan('Br-Br', 4., np.linspace(12, 13.45, 50),
+                              calculation_mode='ΔW', e_far=12.)
+legacy = delta_pair_weight('Br-C', 4., 13.45, 12., 'Henke_Br_swap')
 ```
 
-## Troubleshooting
+Scalar/NumPy arrays use float64/complex128 and explicit shape/finite checks.
+CSV uses 17 significant digits; JSON retains Python float precision. UUID links numerical results to
+metadata including species, q/E, mode, source tables/hash/version, native engine version, warnings and UTC.
+No NetCDF is written: original NetCDF is read-only regression reference. Downloads are generated in memory
+and pathlib handles Unicode paths; browser handles final file saving under Windows/OneDrive.
 
-- `ModuleNotFoundError`: 해당 conda 환경 활성화 후 `python -m pip install -r requirements.txt`와 editable install을 다시 실행하세요.
-- Domain error: 메시지의 q/E 범위를 확인합니다. Extended도 source domain 밖 extrapolation을 허용하지 않습니다.
-- Source unavailable: raw file과 provenance SHA-256을 검사하세요. 다른 source로 자동 대체하지 않습니다.
-- OneDrive: 다운로드는 메모리에서 생성합니다. 파일 저장은 브라우저가 처리하므로 NetCDF backend가 Unicode 경로를 직접 열지 않습니다.
-  잠긴 다운로드 파일은 닫은 뒤 다른 파일명으로 저장하세요.
-- Relative change denominator |Wfar|≤1e−12이면 CSV 빈값 / JSON null입니다.
-- 그래프 글꼴/cache 오류: 쓰기 가능한 local 폴더로 `MPLCONFIGDIR`을 지정할 수 있습니다.
-- Port 충돌: `streamlit run app.py --server.port 8502`.
+## Validation and troubleshooting
 
-`ATRXL_Calculator_v1_Validation.md`, `results/logs/`, `results/sample_*`, `results/figures/`에
-실제 검증 명령, 버전, 결과와 scientific limitations가 기록되어 있습니다.
+See `ATRXL_Calculator_v1_1_Validation.md` and `results/v1.1/logs/` for executed checks and limitations.
+Historical v1.0 validation/report/logs/sample outputs remain in their original paths.
+`data/reference/`, Phase 1 reports and `SHA256SUMS.txt` remain unchanged.
+The plan PDF and historical sparse excerpts were not supplied and have not been read.
+
+- Module missing: activate the intended conda environment and repeat installation commands.
+- Source unavailable: inspect the reported SHA-256/missing-factor error and restore the recorded table;
+  changing sources is an explicit user action.
+- Domain/edge error: use Extended display's actual bands and split scans into one band.
+- Optional browser validation: `pip install -e ".[browser]"`; install Chromium and set
+  `ATRXL_CHROMIUM` to its executable path, then `python scripts/browser_smoke.py` against a local server on 8502.
+- Developer-only dataset refresh: `scripts/prepare_full_sources.py HENKE_TAR FFAST_CHECKOUT` prepares
+  already-downloaded authoritative inputs. Pin/verify the recorded source snapshots and rerun all tests;
+  this is never run by the GUI. See manifest and validation report for exact acquisition URLs and versions.
+- 소스나 패키지 업데이트 후에는 실행 중인 Streamlit을 Ctrl+C로 종료하고 다시 시작하세요.
+  장시간 실행 중인 Python 프로세스가 이전 import module을 유지할 수 있습니다.

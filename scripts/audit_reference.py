@@ -8,7 +8,7 @@ from atrxl import pair_weight
 root=Path(__file__).resolve().parents[1]
 report={};count=0
 with xr.open_dataset(root/'data/reference/contrast_weights.nc') as ds:
-    for source,channel in [('XrayDB','XrayDB_primary'),('Henke','Henke_Br_swap'),('NIST','NIST_Br_swap')]:
+    for source,channel in [('XrayDB','XrayDB_primary'),('Henke_Br_swap','Henke_Br_swap'),('NIST_Br_swap','NIST_Br_swap')]:
         for pair in ds.pair.values:
             max_error=0.
             for start in range(0,ds.sizes['energy_eV'],20):

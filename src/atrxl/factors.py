@@ -1,11 +1,11 @@
 import numpy as np
 import xraydb
 from .validation import validate, ELEMENTS, CalculationError
-from .sources import anomalous
+from .sources import anomalous, native_elements
 
 def factor_components(element, q, energy, source="XrayDB", *, mode="Default"):
     """Return float64 f0, f′, f″ in electrons, broadcast over physical q and keV."""
-    if element not in ELEMENTS: raise CalculationError("Only neutral Br, C, O, H are supported")
+    if element not in native_elements(): raise CalculationError(f"{element}: neutral f0 or source anomalous factors unavailable")
     q,e,_=validate(q,energy,mode)
     q,e=np.broadcast_arrays(q,e)
     with np.errstate(over="ignore",invalid="ignore"):
