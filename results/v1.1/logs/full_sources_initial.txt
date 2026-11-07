@@ -1,0 +1,45 @@
+........................................................................ [ 14%]
+........................................................................ [ 28%]
+........................................................................ [ 42%]
+........................................................................ [ 57%]
+........................................................................ [ 71%]
+........................................................................ [ 85%]
+...................................................................F...  [100%]
+=================================== FAILURES ===================================
+__________________ test_distinct_energy_scan_semantics[Henke] __________________
+
+source = 'Henke'
+
+    @pytest.mark.parametrize('source',SOURCES)
+    def test_distinct_energy_scan_semantics(source):
+        e=np.array([12.,12.5,13.,13.45])
+        w,wm=energy_scan('Br-Br',4,e,source,calculation_mode='W')
+        d,dm=energy_scan('Br-Br',4,e,source,calculation_mode='ΔW',e_far=12.)
+        np.testing.assert_allclose(w.W_e2,pair_weight('Br-Br',4,e,source))
+>       np.testing.assert_allclose(d.delta_W_e2,w.W_e2-pair_weight('Br-Br',4,12,source))
+E       AssertionError: 
+E       Not equal to tolerance rtol=1e-07, atol=0
+E       
+E       Mismatched elements: 1 / 4 (25%)
+E       Mismatch at index:
+E        [0]: 0.0 (ACTUAL), 5.684341886080802e-14 (DESIRED)
+E       Max absolute difference among violations: 5.68434189e-14
+E       Max relative difference among violations: 1.
+E        ACTUAL: array([   0.      ,  -15.826118,  -43.535328, -159.31576 ])
+E        DESIRED: array([ 5.684342e-14, -1.582612e+01, -4.353533e+01, -1.593158e+02])
+
+tests/test_full_sources.py:144: AssertionError
+=============================== warnings summary ===============================
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[XrayDB]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[XrayDB]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[Henke]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[Henke]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[NIST]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[NIST]
+  /workspace/A-TRXL-Calculator/tests/test_full_sources.py:132: Pandas4Warning: The 'float_precision' argument is deprecated. Use the default float precision instead.
+    exported=pd.read_csv(BytesIO(csv_bytes(frame)),float_precision='round_trip')
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_full_sources.py::test_distinct_energy_scan_semantics[Henke]
+1 failed, 502 passed, 6 warnings in 4.16s

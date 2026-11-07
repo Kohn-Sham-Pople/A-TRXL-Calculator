@@ -17,9 +17,10 @@ def numeric(value, name):
     return a
 
 def parse_pair(pair):
+    from .sources import native_elements
     p = pair.replace("–", "-").split("-") if isinstance(pair,str) else pair
-    if not isinstance(p,(list,tuple)) or len(p)!=2 or any(x not in ELEMENTS for x in p):
-        raise CalculationError("pair must contain two of Br, C, O, H")
+    if not isinstance(p,(list,tuple)) or len(p)!=2 or any(not isinstance(x,str) or x not in native_elements() for x in p):
+        raise CalculationError("pair must contain two supported neutral atomic symbols")
     return tuple(p)
 
 def validate(q, energy, mode="Default"):

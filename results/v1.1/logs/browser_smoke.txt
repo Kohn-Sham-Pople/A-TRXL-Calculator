@@ -1,0 +1,8 @@
+{
+  "browser": "156.0.8078.79",
+  "primary_delta_benchmark_display": "-155.2758466592",
+  "W_download_calculation_mode": "W",
+  "W_energy_scan_plots": 1,
+  "q_scan_disabled": true,
+  "console_page_errors": []
+}

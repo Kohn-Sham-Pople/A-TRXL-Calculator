@@ -1,0 +1,20 @@
+........................................................................ [ 13%]
+........................................................................ [ 27%]
+........................................................................ [ 41%]
+........................................................................ [ 55%]
+........................................................................ [ 69%]
+........................................................................ [ 83%]
+........................................................................ [ 97%]
+...............                                                          [100%]
+=============================== warnings summary ===============================
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[XrayDB]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[XrayDB]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[Henke]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[Henke]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[NIST]
+tests/test_full_sources.py::test_mode_specific_results_and_csv_json[NIST]
+  /workspace/A-TRXL-Calculator/tests/test_full_sources.py:132: Pandas4Warning: The 'float_precision' argument is deprecated. Use the default float precision instead.
+    exported=pd.read_csv(BytesIO(csv_bytes(frame)),float_precision='round_trip')
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+519 passed, 6 warnings in 17.02s

@@ -1,0 +1,880 @@
+{
+  "metadata": {
+    "calculation_id": "e9a88e35-8adb-45cc-8578-30cdce0906ed",
+    "calculator_version": "1.1.0",
+    "timestamp_utc": "2026-11-07T08:31:00.213838+00:00",
+    "pair": [
+      "Fe",
+      "Au"
+    ],
+    "q_Ainv": 4.0,
+    "energy_keV": 12.0,
+    "calculation_mode": "W",
+    "mode": "Default",
+    "source": {
+      "source": "Henke",
+      "scope": "Both selected elements use source-specific anomalous factors; no Br-only swap",
+      "version": "official Henke current archive",
+      "retrieved_utc": "2026-11-07T08:16:01.763903+00:00",
+      "tables": {
+        "Fe": {
+          "Z": 26,
+          "file": "Henke/Fe.nff",
+          "url": "https://henke.lbl.gov/optical_constants/sf/fe.nff",
+          "version": "Henke/Gullikson/Davis; current official sf.tar.gz snapshot",
+          "sha256": "0bfc2e35acb3367fa5f36afd4212269db07525c91663e0e4e748dbeb863d9be5",
+          "normalization": "stable energy sort; all duplicate-energy knots excluded; gaps blocked (raw file unchanged)",
+          "raw_rows": 504,
+          "valid_rows": 437,
+          "domain_eV": [
+            29.3,
+            30000.0
+          ],
+          "forbidden_intervals_eV": [
+            [
+              52.2062,
+              53.0506,
+              "M2: XrayDB shell locator (conservative)"
+            ],
+            [
+              90.0825,
+              91.5395,
+              "M1: XrayDB shell locator (conservative)"
+            ],
+            [
+              706.7,
+              706.9,
+              "Henke narrow edge bracket"
+            ],
+            [
+              837.949,
+              851.502,
+              "L1: XrayDB shell locator (conservative)"
+            ],
+            [
+              7111.9,
+              7112.1,
+              "Henke narrow edge bracket"
+            ]
+          ],
+          "edges_eV": {
+            "bracket_0": [
+              706.7,
+              706.9
+            ],
+            "bracket_1": [
+              7111.9,
+              7112.1
+            ],
+            "bracket_2": [
+              837.949,
+              851.502
+            ],
+            "bracket_3": [
+              90.0825,
+              91.5395
+            ],
+            "bracket_4": [
+              52.2062,
+              53.0506
+            ]
+          },
+          "interpolation": "linear full f1(E) minus Z; log-log positive f2; zero on zero-zero intervals; no crossing forbidden intervals; exact knots retained",
+          "f0": "common native XrayDB/Waasmaier–Kirfel neutral atom at q/(4π)",
+          "factor_scope": "both selected elements use this source anomalous factors"
+        },
+        "Au": {
+          "Z": 79,
+          "file": "Henke/Au.nff",
+          "url": "https://henke.lbl.gov/optical_constants/sf/au.nff",
+          "version": "Henke/Gullikson/Davis; current official sf.tar.gz snapshot",
+          "sha256": "c25851cc44ee3c3b5047fc2b439cdf70b24dada8948fa6892c28f31a90326050",
+          "normalization": "stable energy sort; all duplicate-energy knots excluded; gaps blocked (raw file unchanged)",
+          "raw_rows": 506,
+          "valid_rows": 439,
+          "domain_eV": [
+            29.3,
+            30000.0
+          ],
+          "forbidden_intervals_eV": [
+            [
+              56.567,
+              57.482,
+              "O3: XrayDB shell locator (conservative)"
+            ],
+            [
+              73.123,
+              74.3057,
+              "O2: XrayDB shell locator (conservative)"
+            ],
+            [
+              83.138,
+              84.4827,
+              "N7: XrayDB shell locator (conservative)"
+            ],
+            [
+              87.2377,
+              88.6487,
+              "N6: XrayDB shell locator (conservative)"
+            ],
+            [
+              105.76,
+              107.471,
+              "O1: XrayDB shell locator (conservative)"
+            ],
+            [
+              330.418,
+              335.762,
+              "N5: XrayDB shell locator (conservative)"
+            ],
+            [
+              352.319,
+              358.017,
+              "N4: XrayDB shell locator (conservative)"
+            ],
+            [
+              543.346,
+              552.134,
+              "N3: XrayDB shell locator (conservative)"
+            ],
+            [
+              637.908,
+              648.226,
+              "N2: XrayDB shell locator (conservative)"
+            ],
+            [
+              761.042,
+              773.351,
+              "N1: XrayDB shell locator (conservative)"
+            ],
+            [
+              2194.36,
+              2229.85,
+              "M5: XrayDB shell locator (conservative)"
+            ],
+            [
+              2265.92,
+              2302.57,
+              "M4: XrayDB shell locator (conservative)"
+            ],
+            [
+              2703.3,
+              2747.03,
+              "M3: XrayDB shell locator (conservative)"
+            ],
+            [
+              3123.26,
+              3173.78,
+              "M2: XrayDB shell locator (conservative)"
+            ],
+            [
+              3384.15,
+              3438.88,
+              "M1: XrayDB shell locator (conservative)"
+            ],
+            [
+              11918.6,
+              11918.8,
+              "Henke narrow edge bracket"
+            ],
+            [
+              13733.5,
+              13733.7,
+              "Henke narrow edge bracket"
+            ],
+            [
+              14352.7,
+              14352.9,
+              "Henke narrow edge bracket"
+            ]
+          ],
+          "edges_eV": {
+            "bracket_0": [
+              11918.6,
+              11918.8
+            ],
+            "bracket_1": [
+              13733.5,
+              13733.7
+            ],
+            "bracket_2": [
+              14352.7,
+              14352.9
+            ],
+            "bracket_3": [
+              3384.15,
+              3438.88
+            ],
+            "bracket_4": [
+              3123.26,
+              3173.78
+            ],
+            "bracket_5": [
+              2703.3,
+              2747.03
+            ],
+            "bracket_6": [
+              2265.92,
+              2302.57
+            ],
+            "bracket_7": [
+              2194.36,
+              2229.85
+            ],
+            "bracket_8": [
+              761.042,
+              773.351
+            ],
+            "bracket_9": [
+              637.908,
+              648.226
+            ],
+            "bracket_10": [
+              543.346,
+              552.134
+            ],
+            "bracket_11": [
+              352.319,
+              358.017
+            ],
+            "bracket_12": [
+              330.418,
+              335.762
+            ],
+            "bracket_13": [
+              87.2377,
+              88.6487
+            ],
+            "bracket_14": [
+              83.138,
+              84.4827
+            ],
+            "bracket_15": [
+              105.76,
+              107.471
+            ],
+            "bracket_16": [
+              73.123,
+              74.3057
+            ],
+            "bracket_17": [
+              56.567,
+              57.482
+            ]
+          },
+          "interpolation": "linear full f1(E) minus Z; log-log positive f2; zero on zero-zero intervals; no crossing forbidden intervals; exact knots retained",
+          "f0": "common native XrayDB/Waasmaier–Kirfel neutral atom at q/(4π)",
+          "factor_scope": "both selected elements use this source anomalous factors"
+        }
+      },
+      "f0_provenance": {
+        "source": "XrayDB/Chantler",
+        "version": "4.5.8",
+        "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+        "sha256": "fd58bcc4213e3a7c6ecd32d1d8dfd7f4c74526ca468a3df62cce99afeb5ff5bf",
+        "url": "https://xraypy.github.io/XrayDB/python.html",
+        "interpolation": "native API: f1 spline(s=0), Phase 1 extent anchors [11830,13460] eV within that interval; outside it scalar native knots; f2 log-log; f0 Waasmaier-Kirfel",
+        "scope": "neutral atoms",
+        "retrieved_utc": "2026-11-06T15:30:43.971073+00:00",
+        "retrieval_note": "XrayDB 4.5.8 wheel installed during this session; timestamp records acquisition session"
+      },
+      "interpolation": "linear full f1 minus atomic Z; positive f2 log-log; zero-zero intervals constant; edge/gap interpolation forbidden"
+    },
+    "energy_domain": {
+      "source": "Henke",
+      "elements": [
+        "Fe",
+        "Au"
+      ],
+      "min_keV": 0.0293,
+      "max_keV": 30.0,
+      "element_domains": [
+        {
+          "element": "Fe",
+          "min_keV": 0.0293,
+          "max_keV": 30.0,
+          "forbidden_intervals_keV": [
+            [
+              0.0522062,
+              0.0530506,
+              "M2: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.0900825,
+              0.09153950000000001,
+              "M1: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.7067,
+              0.7069,
+              "Henke narrow edge bracket"
+            ],
+            [
+              0.8379489999999999,
+              0.851502,
+              "L1: XrayDB shell locator (conservative)"
+            ],
+            [
+              7.1118999999999994,
+              7.112100000000001,
+              "Henke narrow edge bracket"
+            ]
+          ]
+        },
+        {
+          "element": "Au",
+          "min_keV": 0.0293,
+          "max_keV": 30.0,
+          "forbidden_intervals_keV": [
+            [
+              0.056567,
+              0.057482,
+              "O3: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.07312300000000001,
+              0.0743057,
+              "O2: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.083138,
+              0.0844827,
+              "N7: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.0872377,
+              0.08864870000000001,
+              "N6: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.10576,
+              0.107471,
+              "O1: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.330418,
+              0.335762,
+              "N5: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.352319,
+              0.358017,
+              "N4: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.543346,
+              0.552134,
+              "N3: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.637908,
+              0.648226,
+              "N2: XrayDB shell locator (conservative)"
+            ],
+            [
+              0.761042,
+              0.773351,
+              "N1: XrayDB shell locator (conservative)"
+            ],
+            [
+              2.19436,
+              2.22985,
+              "M5: XrayDB shell locator (conservative)"
+            ],
+            [
+              2.26592,
+              2.3025700000000002,
+              "M4: XrayDB shell locator (conservative)"
+            ],
+            [
+              2.7033,
+              2.74703,
+              "M3: XrayDB shell locator (conservative)"
+            ],
+            [
+              3.12326,
+              3.1737800000000003,
+              "M2: XrayDB shell locator (conservative)"
+            ],
+            [
+              3.38415,
+              3.43888,
+              "M1: XrayDB shell locator (conservative)"
+            ],
+            [
+              11.9186,
+              11.9188,
+              "Henke narrow edge bracket"
+            ],
+            [
+              13.7335,
+              13.7337,
+              "Henke narrow edge bracket"
+            ],
+            [
+              14.3527,
+              14.3529,
+              "Henke narrow edge bracket"
+            ]
+          ]
+        }
+      ],
+      "forbidden_intervals_keV": [
+        [
+          0.0522062,
+          0.0530506,
+          "Fe: M2: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.056567,
+          0.057482,
+          "Au: O3: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.07312300000000001,
+          0.0743057,
+          "Au: O2: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.083138,
+          0.0844827,
+          "Au: N7: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.0872377,
+          0.08864870000000001,
+          "Au: N6: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.0900825,
+          0.09153950000000001,
+          "Fe: M1: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.10576,
+          0.107471,
+          "Au: O1: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.330418,
+          0.335762,
+          "Au: N5: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.352319,
+          0.358017,
+          "Au: N4: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.543346,
+          0.552134,
+          "Au: N3: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.637908,
+          0.648226,
+          "Au: N2: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.7067,
+          0.7069,
+          "Fe: Henke narrow edge bracket"
+        ],
+        [
+          0.761042,
+          0.773351,
+          "Au: N1: XrayDB shell locator (conservative)"
+        ],
+        [
+          0.8379489999999999,
+          0.851502,
+          "Fe: L1: XrayDB shell locator (conservative)"
+        ],
+        [
+          2.19436,
+          2.22985,
+          "Au: M5: XrayDB shell locator (conservative)"
+        ],
+        [
+          2.26592,
+          2.3025700000000002,
+          "Au: M4: XrayDB shell locator (conservative)"
+        ],
+        [
+          2.7033,
+          2.74703,
+          "Au: M3: XrayDB shell locator (conservative)"
+        ],
+        [
+          3.12326,
+          3.1737800000000003,
+          "Au: M2: XrayDB shell locator (conservative)"
+        ],
+        [
+          3.38415,
+          3.43888,
+          "Au: M1: XrayDB shell locator (conservative)"
+        ],
+        [
+          7.1118999999999994,
+          7.112100000000001,
+          "Fe: Henke narrow edge bracket"
+        ],
+        [
+          11.9186,
+          11.9188,
+          "Au: Henke narrow edge bracket"
+        ],
+        [
+          13.7335,
+          13.7337,
+          "Au: Henke narrow edge bracket"
+        ],
+        [
+          14.3527,
+          14.3529,
+          "Au: Henke narrow edge bracket"
+        ]
+      ],
+      "usable_bands_keV": [
+        [
+          0.0293,
+          0.0522062
+        ],
+        [
+          0.0530506,
+          0.056567
+        ],
+        [
+          0.057482,
+          0.07312300000000001
+        ],
+        [
+          0.0743057,
+          0.083138
+        ],
+        [
+          0.0844827,
+          0.0872377
+        ],
+        [
+          0.08864870000000001,
+          0.0900825
+        ],
+        [
+          0.09153950000000001,
+          0.10576
+        ],
+        [
+          0.107471,
+          0.330418
+        ],
+        [
+          0.335762,
+          0.352319
+        ],
+        [
+          0.358017,
+          0.543346
+        ],
+        [
+          0.552134,
+          0.637908
+        ],
+        [
+          0.648226,
+          0.7067
+        ],
+        [
+          0.7069,
+          0.761042
+        ],
+        [
+          0.773351,
+          0.8379489999999999
+        ],
+        [
+          0.851502,
+          2.19436
+        ],
+        [
+          2.22985,
+          2.26592
+        ],
+        [
+          2.3025700000000002,
+          2.7033
+        ],
+        [
+          2.74703,
+          3.12326
+        ],
+        [
+          3.1737800000000003,
+          3.38415
+        ],
+        [
+          3.43888,
+          7.1118999999999994
+        ],
+        [
+          7.112100000000001,
+          11.9186
+        ],
+        [
+          11.9188,
+          13.7335
+        ],
+        [
+          13.7337,
+          14.3527
+        ],
+        [
+          14.3529,
+          30.0
+        ]
+      ],
+      "edges": [
+        {
+          "element": "Fe",
+          "shell": "M2: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.0522062,
+            0.0530506
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Fe",
+          "shell": "M1: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.0900825,
+            0.09153950000000001
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Fe",
+          "shell": "Henke narrow edge bracket",
+          "bracket_keV": [
+            0.7067,
+            0.7069
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Fe",
+          "shell": "L1: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.8379489999999999,
+            0.851502
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Fe",
+          "shell": "Henke narrow edge bracket",
+          "bracket_keV": [
+            7.1118999999999994,
+            7.112100000000001
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "O3: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.056567,
+            0.057482
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "O2: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.07312300000000001,
+            0.0743057
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N7: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.083138,
+            0.0844827
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N6: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.0872377,
+            0.08864870000000001
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "O1: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.10576,
+            0.107471
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N5: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.330418,
+            0.335762
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N4: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.352319,
+            0.358017
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N3: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.543346,
+            0.552134
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N2: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.637908,
+            0.648226
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "N1: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            0.761042,
+            0.773351
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "M5: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            2.19436,
+            2.22985
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "M4: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            2.26592,
+            2.3025700000000002
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "M3: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            2.7033,
+            2.74703
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "M2: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            3.12326,
+            3.1737800000000003
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "M1: XrayDB shell locator (conservative)",
+          "bracket_keV": [
+            3.38415,
+            3.43888
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "Henke narrow edge bracket",
+          "bracket_keV": [
+            11.9186,
+            11.9188
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "Henke narrow edge bracket",
+          "bracket_keV": [
+            13.7335,
+            13.7337
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        },
+        {
+          "element": "Au",
+          "shell": "Henke narrow edge bracket",
+          "bracket_keV": [
+            14.3527,
+            14.3529
+          ],
+          "provenance": "Henke raw-knot bracket or conservative shell locator; see manifest"
+        }
+      ],
+      "warning": "Domain envelope contains excluded interpolation gaps. Use a single usable band; raw knots at a gap boundary remain usable. No extrapolation."
+    },
+    "xraydb_version": "4.5.8",
+    "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+    "units": {
+      "f": "electrons",
+      "W": "electrons²",
+      "q": "Å⁻¹",
+      "energy": "keV"
+    },
+    "warnings": [
+      "Expanded species: source-level numerical validation only; not Phase 1 research validation.",
+      "Neutral-atom coefficients; near-edge chemical-state and experimental validity are not established."
+    ],
+    "convention": "one unordered pair; no multiplicity or geometry"
+  },
+  "results": [
+    {
+      "calculation_id": "e9a88e35-8adb-45cc-8578-30cdce0906ed",
+      "q_Ainv": 4.0,
+      "energy_keV": 12.0,
+      "W_e2": 742.7639643778629,
+      "Fe_f0_e": 16.173816088912645,
+      "Fe_fprime_e": 0.27134730789336103,
+      "Fe_fdoubleprime_e": 1.6624787564513783,
+      "Fe_f_real_e": 16.445163396806006,
+      "Fe_f_imag_e": 1.6624787564513783,
+      "Au_f0_e": 58.08653352419648,
+      "Au_fprime_e": -13.940333333333243,
+      "Au_fdoubleprime_e": 10.0888440384104,
+      "Au_f_real_e": 44.14620019086324,
+      "Au_f_imag_e": 10.0888440384104
+    }
+  ]
+}

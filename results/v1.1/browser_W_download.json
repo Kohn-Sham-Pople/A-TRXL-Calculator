@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "calculation_id": "8a9de421-c3b0-40b6-a754-de0e22bab903",
+    "calculator_version": "1.1.0",
+    "timestamp_utc": "2026-11-07T08:33:11.598171+00:00",
+    "pair": [
+      "Br",
+      "Br"
+    ],
+    "q_Ainv": 4.0,
+    "energy_keV": 13.45,
+    "calculation_mode": "W",
+    "mode": "Default",
+    "source": {
+      "source": "XrayDB",
+      "version": "4.5.8",
+      "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+      "sha256": "fd58bcc4213e3a7c6ecd32d1d8dfd7f4c74526ca468a3df62cce99afeb5ff5bf",
+      "url": "https://xraypy.github.io/XrayDB/python.html",
+      "interpolation": "native API: f1 spline(s=0), Phase 1 extent anchors [11830,13460] eV within that interval; outside it scalar native knots; f2 log-log; f0 Waasmaier-Kirfel",
+      "scope": "neutral atoms",
+      "retrieved_utc": "2026-11-06T15:30:43.971073+00:00",
+      "retrieval_note": "XrayDB 4.5.8 wheel installed during this session; timestamp records acquisition session",
+      "f0_provenance": "XrayDB/Waasmaier–Kirfel neutral atom, physical q/(4π)"
+    },
+    "energy_domain": {
+      "source": "XrayDB",
+      "elements": [
+        "Br",
+        "Br"
+      ],
+      "min_keV": 0.00101,
+      "max_keV": 966.26674,
+      "element_domains": [
+        {
+          "element": "Br",
+          "min_keV": 0.00101,
+          "max_keV": 966.26674,
+          "forbidden_intervals_keV": []
+        },
+        {
+          "element": "Br",
+          "min_keV": 0.00101,
+          "max_keV": 966.26674,
+          "forbidden_intervals_keV": []
+        }
+      ],
+      "forbidden_intervals_keV": [],
+      "usable_bands_keV": [
+        [
+          0.00101,
+          0.003
+        ],
+        [
+          0.003,
+          0.027
+        ],
+        [
+          0.027,
+          0.069
+        ],
+        [
+          0.069,
+          0.07
+        ],
+        [
+          0.07,
+          0.182
+        ],
+        [
+          0.182,
+          0.189
+        ],
+        [
+          0.189,
+          0.257
+        ],
+        [
+          0.257,
+          1.55
+        ],
+        [
+          1.55,
+          1.596
+        ],
+        [
+          1.596,
+          1.782
+        ],
+        [
+          1.782,
+          13.474
+        ],
+        [
+          13.474,
+          966.26674
+        ]
+      ],
+      "edges": [
+        {
+          "element": "Br",
+          "shell": "K",
+          "energy_keV": 13.474,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "L1",
+          "energy_keV": 1.782,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "L2",
+          "energy_keV": 1.596,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "L3",
+          "energy_keV": 1.55,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "M1",
+          "energy_keV": 0.257,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "M2",
+          "energy_keV": 0.189,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "M3",
+          "energy_keV": 0.182,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "M4",
+          "energy_keV": 0.07,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "M5",
+          "energy_keV": 0.069,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "N1",
+          "energy_keV": 0.027,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "N2",
+          "energy_keV": 0.003,
+          "provenance": "installed XrayDB xray_edges"
+        },
+        {
+          "element": "Br",
+          "shell": "N3",
+          "energy_keV": 0.003,
+          "provenance": "installed XrayDB xray_edges"
+        }
+      ],
+      "warning": "Domain envelope contains excluded interpolation gaps. Use a single usable band; raw knots at a gap boundary remain usable. No extrapolation."
+    },
+    "xraydb_version": "4.5.8",
+    "database_version": "XrayDB Version: 9.2, Python Version: 4.5.8",
+    "units": {
+      "f": "electrons",
+      "W": "electrons²",
+      "q": "Å⁻¹",
+      "energy": "keV"
+    },
+    "warnings": [
+      "Neutral-atom coefficients; near-edge chemical-state and experimental validity are not established."
+    ],
+    "convention": "one unordered pair; no multiplicity or geometry"
+  },
+  "results": [
+    {
+      "calculation_id": "8a9de421-c3b0-40b6-a754-de0e22bab903",
+      "q_Ainv": 4.0,
+      "energy_keV": 13.45,
+      "W_e2": 303.4367796505867,
+      "Br_f0_e": 23.267010391517157,
+      "Br_fprime_e": -5.856022224264764,
+      "Br_fdoubleprime_e": 0.5424672251702024,
+      "Br_f_real_e": 17.41098816725239,
+      "Br_f_imag_e": 0.5424672251702024
+    }
+  ]
+}
